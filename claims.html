@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- The character set that will be used.-->
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- The title is shown in search engine results, and the tab text-->
+    <Title>Claims</Title>
+
+    <!-- Description appears below the Title in search engine results.-->
+    <meta name="description” content= 
+            'This is my basic Claims site, showcasing HTML, CSS and JavaScript.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="claims.css">
+    <script src="claims.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Claims</h1>
+    </header>
+    <form action="submit">
+        <h2>Make a new claim</h2>
+        
+        <button class="accordion" onclick="accordionFold(this)" attachedSection="personalDetails">Personal Details</button>
+        <section hidden name="personalDetails" >
+            <label for="firstName">First name</label>
+            <input required name="firstName" type="text" required min="2" max="20">
+            <br>
+            <label for="middleName">Middle name(s)</label>
+            <input name="middleName" type="text" required min="2" max="20">
+            <br>
+            <label for="lastName">Last name</label>
+            <input required name="lastName" type="text" required min="2" max="20">
+        </section>
+        <button class="accordion" onclick="accordionFold(this)" attachedSection="policyDetails">Policy Details</button>
+        <section hidden name="policyDetails">
+            <label required for="policyNumber">Policy number</label>
+            <input required name="policyNumber" type="text" required min="8" max="8">
+            <br>
+            <label required for="policyType">Policy type</label>
+            <select name="policyType" required onchange="policySelected(this)">
+                <option value="" selected="true" disabled="disabled">Select</option>
+                <option value="vehicleDetails">Vehicle</option>
+                <option value="petDetails">Pet</option>
+                <option value="propertyDetails">Property</option>
+            </select>
+        </section>
+        <button class="accordion" onclick="accordionFold(this)" attachedSection="claimDetails">Claim Details</button>
+        <section hidden name="claimDetails">
+            <label for="claimDate">Date of claim</label>
+            <input required name="claimDate" type="date">
+            <br>
+            <label for="claimValue">Claim value</label>
+            <input required name="claimValue" type="number" step="0.01" required min="0" max="1000000">
+            <br>
+            <label for="claimReason">Claim reason</label>
+            <input name="claimReason" type="text" required>       
+            <br>
+            <div id="vehicleDetails" hidden="hidden">                
+                <label for="vehicleMake">Make</label>
+                <input name="vehicleMake" type="text">               
+                <br>
+                <label for="vehicleModel">Model</label>
+                <input name="vehicleModel" type="text">             
+                <br>
+                <label for="vehicleYear">Year of model</label>
+                <input name="vehicleYear" type="number" min="1900" max="2100">
+            </div>
+            <div id="petDetails" hidden="hidden">                
+                <label for="petType">Pet type(e.g dog, cat)</label>
+                <input name="petType" type="text">
+                <br>              
+                <label for="petBreed">Breed</label>
+                <input name="petBreed" type="text">                
+            </div>
+            <div id="propertyDetails" hidden="hidden">                
+                <label for="propertyAddress">Address</label>
+                <input name="propertyAddress" type="text">
+            </div>
+            <br>
+            <label for="claimDescription">Incident description</label>
+            <textarea name="claimDescription" cols="40" rows="5"></textarea>                 
+        </section>        
+        <button type="submit">Submit</button>
+    </form>
+</body>
+
+</html>
